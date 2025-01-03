@@ -17,7 +17,7 @@
 @import url('./back-link.css');
 @import url('./footer.css');*/
 
-/* ======== стилізація пошуку ======== */
+/* ======== стилізація поля пошуку ======== */
 
 .search-image-form {
   padding-top: 36px;
@@ -26,13 +26,21 @@
   justify-content: center;
 }
 
+input {
+  padding: 0;
+}
+
+input[type='text' i] {
+  padding-block: 0;
+  padding-inline: 0;
+}
 .search-field {
+  box-sizing: border-box;
+  display: flex;
   width: 272px;
   height: 40px;
   border-radius: 4px;
   border: 1px solid #808080;
-
-  padding-left: 16px;
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
@@ -41,10 +49,27 @@
   letter-spacing: 0.64px;
 }
 
-input[type='text' i] {
-  padding-block: 0px;
-  padding-inline: 0px;
+.search-field:hover {
+  border-color: #000000;
 }
+
+input.search-field[name='field']:focus-visible {
+  border: 1px solid #4e75ff !important;
+  outline: none !important; /* видаляємо стандартний контур */
+}
+
+input.search-field[name='field']:active {
+  border: 1px solid #4e75ff !important;
+}
+
+input.search-field[name='field'] {
+  padding: 0 0 0 16px;
+}
+
+input.search-field::placeholder {
+  color: #808080;
+}
+/* ======== стилізація кнопки ======== */
 .submit-button {
   display: inline-flex;
   padding: 8px 16px;
@@ -66,21 +91,6 @@ input[type='text' i] {
 
 .submit-button:hover {
   background: #6c8cff;
-}
-
-.search-field {
-  width: 272px;
-  height: 40px;
-  border-radius: 4px;
-  border: 1px solid #808080;
-
-  padding-left: 16px;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.64px;
 }
 
 /* ======== стилізація галереї зображень ======== */

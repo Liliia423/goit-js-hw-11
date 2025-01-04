@@ -1,4 +1,18 @@
-const images = [
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+const API_KEY = import.meta.env.VITE_PIXABAY_API_KEY;
+const URL = `https://pixabay.com/api/?key=${API_KEY}&q=flowers&image_type=photo`;
+
+fetch(URL)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+/*const images = [
   {
     preview:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
@@ -106,4 +120,4 @@ gallery.addEventListener('click', event => {
   );
 
   instance.show();
-});
+});*/

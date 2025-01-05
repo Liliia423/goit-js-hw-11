@@ -140,3 +140,76 @@ input.search-field::placeholder {
   object-fit: cover;
   margin: auto;
 }
+
+/* ======== стилізація повідомлення про помилку ======== */
+
+.iziToast {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+.iziToast.iziToast-color-red {
+  /*border-color: #ef4040 !important;*/
+  background: #ef4040 !important;
+  border-radius: 4px !important;
+}
+
+.iziToast-body {
+  box-sizing: border-box;
+  min-height: 1px !important;
+  padding: 20px 62px 20px 52px !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+}
+
+.iziToast-texts {
+  margin: 0 !important;
+  padding-right: 0 !important;
+}
+
+.iziToast-message {
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-family: Montserrat !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.error-toast {
+  display: inline-flex;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* стилізація слова Error 
+:root {
+  font-synthesis: weight;
+}*/
+.iziToast-message.slideIn .error-toast .title {
+  font-weight: 700 !important;
+}
+
+/* додавання іконок */
+.iziToast-icon {
+  background: url('../img/bi_x-octagon.svg') no-repeat 50% 50% !important;
+  margin-left: 20px !important;
+}
+.iziToast-close {
+  background: url('../img/bi_x-lg.svg') no-repeat 50% 50% !important;
+  border: none !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  /*background-size: 30% !important;*/
+}
+
+/* ==== стилізація прогрес-бару ==== */
+.error-toast .iziToast-progressbar {
+  background: #ffbebe !important;
+  border-radius: 0 0 4px 4px !important;
+}

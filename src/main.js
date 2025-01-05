@@ -1,16 +1,11 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+/*import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';*/
 
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+/*import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';*/
 
-const API_KEY = import.meta.env.VITE_PIXABAY_API_KEY;
-const URL = `https://pixabay.com/api/?key=${API_KEY}&q=flowers&image_type=photo`;
-
-fetch(URL)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
+/*import './js/pixabay-api.js';
+import './js/render-functions.js';*/
 
 /*const images = [
   {

@@ -5,6 +5,68 @@ const submitBtn = document.querySelector('.submit-button');
 const searchField = document.querySelector('.search-field');
 const searchForm = document.querySelector('.search-image-form');
 
+searchForm.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    /*iziToast.warning({
+      message: 'Don`t use key! Use Search button!',
+    });*/
+  }
+});
+
+submitBtn.addEventListener('click', () => {
+  event.preventDefault();
+
+  const query = searchField.value.trim(); //це отримання значення з поля
+  if (!query) {
+    return;
+  }
+
+  searchField.value = '';
+
+  fetch(
+    `https://pixabay.com/api/?key=45378122-3aa1f0accb7d59cfaae2c348a&q=${query}&image_type=photo&orientation=horizontal&safesearch=true`
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json(); //перетв відп у json у разі успіху і передає наступному .then
+    })
+
+    .then(data => {
+      if (data.hits.length === 0) {
+        iziToast.error({
+          message: `Sorry, there are no images matching your search query. Please, try again!`,
+          position: 'topRight',
+          class: 'error-toast',
+          timeout: 4000,
+          closeOnClick: true,
+        });
+        return;
+      }
+      console.log(data.hits);
+    })
+
+    .catch(error => {
+      /*iziToast.error({
+        message: `Sorry, there are no images matching your search query. Please, try again!`,
+        position: 'topRight',
+        class: 'error-toast',
+        timeout: 400000,
+        closeOnClick: true,
+      });*/
+    });
+});
+
+/*====зразок коду запиту через колбек без назви функції====
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+const submitBtn = document.querySelector('.submit-button');
+const searchField = document.querySelector('.search-field');
+const searchForm = document.querySelector('.search-image-form');
+
 submitBtn.addEventListener('click', () => {
   event.preventDefault();
 
@@ -22,8 +84,6 @@ submitBtn.addEventListener('click', () => {
   searchField.value = '';
   fetch(
     `https://pixabay.com/api/?key=45378122-3aa1f0accb7d59cfaae2c348a&q=${query}&image_type=photo&orientation=horizontal&safesearch=true`
-
-    /*`https://pixabay.com/api/?key=45378122-3aa1f0accb7d59cfaae2c348a&q=query&image_type=photo&orientation=horizontal&safesearch=true`*/
   )
     .then(response => {
       if (!response.ok) {
@@ -46,6 +106,7 @@ submitBtn.addEventListener('click', () => {
       });
     });
 });
+*/
 
 /*====зразок коду перевірки чи порожній масив====
 .then(data => {
@@ -75,7 +136,7 @@ submitBtn.addEventListener('click', () => {
     return;
   }*/
 
-/*====заборона відправки форми натисканням Enter====
+/*====заборона відправки форми натисканням клавіші Enter====
 searchForm.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     event.preventDefault();

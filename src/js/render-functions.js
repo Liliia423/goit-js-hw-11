@@ -15,6 +15,7 @@
         `;
         gallery.insertAdjacentHTML('beforeend', imageHTML);
       });*/
+import { searchImages } from '.pixabay-api.js';
 
 const tegMain = document.querySelector('main');
 

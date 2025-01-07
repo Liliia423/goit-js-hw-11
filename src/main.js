@@ -1,6 +1,48 @@
 /*import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';*/
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+import { requestSending } from './js/pixabay-api';
+
+const searchForm = document.querySelector('.search-image-form');
+const searchField = document.querySelector('.search-field');
+
+searchForm.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    event.preventDefault(); 
+  }
+});
+
+searchForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const query = searchField.value.trim();
+
+  if (!query) {
+    /*console.log('Please enter a search query.');*/
+    return;
+  }
+
+  try {
+    const data = await requestSending(query); // Викликаємо функцію запиту
+    if (data.hits.length === 0) {
+      iziToast.error({
+        message: `Sorry, there are no images matching your search query. Please, try again!`,
+        position: 'topRight',
+        class: 'error-toast',
+        timeout: 4000,
+        closeOnClick: true,
+      });
+    } else {
+      console.log(data.hits); // Виводимо результати в консоль
+    }
+  } catch (error) {
+    /*console.error('Error during request:', error);*/
+  }
+
+  searchField.value = ''; // Очищуємо поле після запиту
+});
 
 
 

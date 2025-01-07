@@ -1,5 +1,5 @@
 /*========блок розмітки========*/
-const tegMain = document.querySelector('main');
+/*const tegMain = document.querySelector('main');
 
 const tegForm = document.createElement('form');
 tegForm.className = 'search-image-form';
@@ -19,7 +19,7 @@ tegButton.type = 'submit';
 tegButton.className = 'submit-button';
 tegForm.appendChild(tegButton);
 
-tegMain.prepend(tegForm);
+tegMain.prepend(tegForm);*/
 
 /*========блок створення галереї зображень========*/
 /*const gallery = document.querySelector('.gallery');

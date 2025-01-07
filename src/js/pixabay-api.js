@@ -1,15 +1,31 @@
-import iziToast from 'izitoast';
+const API_KEY = '45378122-3aa1f0accb7d59cfaae2c348a';
+const BASE_URL = 'https://pixabay.com/api/';
+
+// Функція для виконання запиту
+export function requestSending(query) {
+  return fetch(`${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Перетворюємо відповідь у JSON
+    });
+}
+
+/*import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+const searchForm = document.querySelector('.search-image-form');
 const submitBtn = document.querySelector('.submit-button');
 const searchField = document.querySelector('.search-field');
-const searchForm = document.querySelector('.search-image-form');
+
 
 searchForm.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     event.preventDefault(); 
   }
 });
+
 
 submitBtn.addEventListener('click', () => {
   event.preventDefault();
@@ -47,7 +63,7 @@ submitBtn.addEventListener('click', () => {
 
     .catch(error => {    
     });
-});
+});*/
 
 /*====зразок коду виведення помилки з повідомленням iziToast.error====
 .catch(error => {

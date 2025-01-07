@@ -7,17 +7,14 @@ const searchForm = document.querySelector('.search-image-form');
 
 searchForm.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
-    event.preventDefault();
-    /*iziToast.warning({
-      message: 'Don`t use key! Use Search button!',
-    });*/
+    event.preventDefault(); 
   }
 });
 
 submitBtn.addEventListener('click', () => {
   event.preventDefault();
 
-  const query = searchField.value.trim(); //це отримання значення з поля
+  const query = searchField.value.trim(); 
   if (!query) {
     return;
   }
@@ -31,7 +28,7 @@ submitBtn.addEventListener('click', () => {
       if (!response.ok) {
         throw new Error(response.status);
       }
-      return response.json(); //перетв відп у json у разі успіху і передає наступному .then
+      return response.json(); 
     })
 
     .then(data => {
@@ -48,16 +45,20 @@ submitBtn.addEventListener('click', () => {
       console.log(data.hits);
     })
 
-    .catch(error => {
-      /*iziToast.error({
+    .catch(error => {    
+    });
+});
+
+/*====зразок коду виведення помилки з повідомленням iziToast.error====
+.catch(error => {
+      iziToast.error({
         message: `Sorry, there are no images matching your search query. Please, try again!`,
         position: 'topRight',
         class: 'error-toast',
         timeout: 400000,
         closeOnClick: true,
-      });*/
-    });
-});
+      });
+    });*/
 
 /*====зразок коду запиту через колбек без назви функції====
 import iziToast from 'izitoast';

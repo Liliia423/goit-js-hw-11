@@ -1,9 +1,10 @@
-/*========блок створення запиту========*/
+/*========блок розмітки========*/
 const tegMain = document.querySelector('main');
 
 const tegForm = document.createElement('form');
 tegForm.className = 'search-image-form';
 tegMain.appendChild(tegForm);
+
 
 const tegInput = document.createElement('input');
 tegInput.type = 'text';

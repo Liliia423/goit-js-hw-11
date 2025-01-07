@@ -1,41 +1,45 @@
-/*========блок розмітки========*/
-/*const tegMain = document.querySelector('main');
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const tegForm = document.createElement('form');
-tegForm.className = 'search-image-form';
-tegMain.appendChild(tegForm);
+export function markupSearchForm() {
+  const tegMain = document.querySelector('main');
 
+  const tegForm = document.createElement('form');
+  tegForm.className = 'search-image-form';
 
-const tegInput = document.createElement('input');
-tegInput.type = 'text';
-tegInput.name = 'field';
-tegInput.className = 'search-field';
-tegInput.placeholder = 'Search images...';
-tegForm.appendChild(tegInput);
+  const tegInput = document.createElement('input');
+  tegInput.type = 'text';
+  tegInput.name = 'field';
+  tegInput.className = 'search-field';
+  tegInput.placeholder = 'Search images...';
+  tegForm.appendChild(tegInput);
 
-const tegButton = document.createElement('button');
-tegButton.textContent = 'Search';
-tegButton.type = 'submit';
-tegButton.className = 'submit-button';
-tegForm.appendChild(tegButton);
+  const tegButton = document.createElement('button');
+  tegButton.textContent = 'Search';
+  tegButton.type = 'submit';
+  tegButton.className = 'submit-button';
+  tegForm.appendChild(tegButton);
 
-tegMain.prepend(tegForm);*/
+  tegMain.prepend(tegForm);
+}
 
-/*========блок створення галереї зображень========*/
-/*const gallery = document.querySelector('.gallery');
-      gallery.innerHTML = '';
+export function renderGallery(images) {
+  const gallery = document.querySelector('.gallery');
+  const markup = images.map(image => `
+    <li>
+      <a href="${image.largeImageURL}">
+        <img src="${image.webformatURL}" alt="${image.tags}" />
+      </a>
+    </li>
+  `).join('');
 
-      data.hits.forEach(image => {
-        const imageHTML = `
-          <li class="gallery-item">
-            <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
-            <div class="info">
-              <p><strong>Likes:</strong> ${image.likes}</p>
-              <p><strong>Views:</strong> ${image.views}</p>
-              <p><strong>Comments:</strong> ${image.comments}</p>
-              <p><strong>Downloads:</strong> ${image.downloads}</p>
-            </div>
-          </li>
-        `;
-        gallery.insertAdjacentHTML('beforeend', imageHTML);
-      });*/
+  gallery.insertAdjacentHTML('beforeend', markup);
+
+  // Ініціалізація SimpleLightbox або оновлення галереї
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
+
+  lightbox.refresh();
+}

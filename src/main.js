@@ -14,12 +14,6 @@ searchForm.addEventListener('submit', async (event) => {
   const query = searchField.value.trim();
 
   if (!query) {
-    iziToast.error({
-      message: 'Please enter a search query.',
-      position: 'topRight',
-      class: 'error-toast',
-      timeout: 4000,
-    });
     return;
   }
 
@@ -36,13 +30,7 @@ searchForm.addEventListener('submit', async (event) => {
     }
     gallery.innerHTML = ''; 
     renderGallery(data.hits); 
-  } catch (error) {
-    iziToast.error({
-      message: `An error occurred: ${error.message}`,
-      position: 'topRight',
-      class: 'error-toast',
-      timeout: 4000,
-    });
+  } catch (error) {  
   }
 
   searchField.value = ''; 

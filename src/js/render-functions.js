@@ -29,6 +29,12 @@ export function renderGallery(images) {
     <li>
       <a href="${image.largeImageURL}">
         <img src="${image.webformatURL}" alt="${image.tags}" />
+        <div class="gallery-info">
+        <p class="gallery-info-item"><b>Likes:</b> ${image.likes}</p>
+        <p class="gallery-info-item"><b>Views:</b> ${image.views}</p>
+        <p class="gallery-info-item"><b>Comments:</b> ${image.comments}</p>
+        <p class="gallery-info-item"><b>Downloads:</b> ${image.downloads}</p>
+      </div>
       </a>
     </li>
   `).join('');

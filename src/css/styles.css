@@ -95,7 +95,7 @@ input.search-field::placeholder {
 
 /* ======== стилізація галереї зображень ======== */
 .gallery {
-  list-style: none;
+
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
@@ -109,81 +109,45 @@ input.search-field::placeholder {
  }
 
 li {
+  box-sizing: border-box;
+  position: relative;
   width: calc(100% / 3 - 16px); 
   height: 200px; 
   overflow: hidden;
+  border: 1px solid #808080;
 }
 
 .gallery-info {
-  position: static;
-  bottom: 0;
+  position: absolute;
+  top: 151px;
   left: 0;
   width: 100%;
   height: 48px;
-  padding: 4px 25px 4px 20px;
+  padding: 0 25px 0 20px;
   display: flex;
   background-color: #ffffff;
   text-align: center;
- justify-content: space-between;
- box-sizing: border-box;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 0.48px;
+
+}
+:root {
+  font-synthesis:weight !important;
 }
 
 .gallery-info-item {
   display:flex;
   flex-direction: column;
- 
+  margin: 0 !important;
+  color: #2E2F42;
+  
 }
-.gallery-item {
-  position: relative; /* Щоб правильно позиціонувати дочірні елементи */
-  overflow: hidden;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-link {
-  display: block;
-}
-
-.gallery-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
-.gallery-info-item {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #333;
-}
-
-
-/*.gallery-item {
-  max-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 360px;
-  margin: 0 auto;
-  outline: none;
-}
-
-.gallery-link {
-  display: inline-block;
-  text-decoration: none;
-  outline: none;
-  line-height: 0;
-}
-
-.gallery-image {
-  height: 200px;
-  width: 360px;
-  object-fit: cover;
-}*/
 
 .basicLightbox {
   background-color: rgba(46, 47, 66, 0.8);

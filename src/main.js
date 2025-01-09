@@ -9,6 +9,8 @@ const searchForm = document.querySelector('.search-image-form');
 const searchField = document.querySelector('.search-field');
 const gallery = document.querySelector('.gallery');
 
+const loader = document.querySelector('.loader');
+
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault(); 
   const query = searchField.value.trim();
@@ -16,6 +18,8 @@ searchForm.addEventListener('submit', async (event) => {
   if (!query) {
     return;
   }
+
+  showLoader();
 
   try {
     const data = await requestSending(query); 
@@ -28,10 +32,24 @@ searchForm.addEventListener('submit', async (event) => {
       });
       return;
     }
-    gallery.innerHTML = ''; 
-    renderGallery(data.hits); 
+    
+   gallery.innerHTML = ''; 
+   
+  renderGallery(data.hits);
+  hideLoader()
   } catch (error) {  
+  }
+  finally {
   }
 
   searchField.value = ''; 
 });
+
+
+function showLoader() {
+  loader.style.display = 'block';
+}
+
+function hideLoader() {
+  loader.style.display = 'none';
+}

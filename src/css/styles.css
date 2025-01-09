@@ -95,7 +95,7 @@ input.search-field::placeholder {
 
 /* ======== стилізація галереї зображень ======== */
 .gallery {
-
+position: relative;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
@@ -130,11 +130,11 @@ li {
   justify-content: space-between;
   box-sizing: border-box;
   font-family: Montserrat;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 2;
-    letter-spacing: 0.48px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: 0.48px;
 
 }
 :root {
@@ -236,4 +236,29 @@ li {
 }
 
 
+.loader {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+  z-index: 1050;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #000000;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  background-color: rgba(255, 0, 0, 0.3);
+display: none;
+  transform: translate(-50%, -50%);
+  }
 
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 

@@ -3,14 +3,14 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { requestSending } from './js/pixabay-api';
 import { markupSearchForm, renderGallery } from './js/render-functions';
 
-// Створюємо форму пошуку
 markupSearchForm();
 
 const searchForm = document.querySelector('.search-image-form');
 const searchField = document.querySelector('.search-field');
+const gallery = document.querySelector('.gallery');
 
 searchForm.addEventListener('submit', async (event) => {
-  event.preventDefault(); // Запобігаємо перезавантаженню сторінки
+  event.preventDefault(); 
   const query = searchField.value.trim();
 
   if (!query) {
@@ -24,7 +24,7 @@ searchForm.addEventListener('submit', async (event) => {
   }
 
   try {
-    const data = await requestSending(query); // Отримуємо дані з Pixabay API
+    const data = await requestSending(query); 
     if (data.hits.length === 0) {
       iziToast.error({
         message: 'Sorry, there are no images matching your search query. Please try again.',
@@ -34,7 +34,8 @@ searchForm.addEventListener('submit', async (event) => {
       });
       return;
     }
-    renderGallery(data.hits); // Рендеримо галерею
+    gallery.innerHTML = ''; 
+    renderGallery(data.hits); 
   } catch (error) {
     iziToast.error({
       message: `An error occurred: ${error.message}`,
@@ -44,5 +45,5 @@ searchForm.addEventListener('submit', async (event) => {
     });
   }
 
-  searchField.value = ''; // Очищуємо поле після запиту
+  searchField.value = ''; 
 });

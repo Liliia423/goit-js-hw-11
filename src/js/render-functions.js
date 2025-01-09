@@ -43,3 +43,5 @@ export function renderGallery(images) {
 
   lightbox.refresh();
 }
+
+

@@ -74,7 +74,6 @@ searchForm.addEventListener('submit', (event) => {
       hideLoader();
     })
     .catch((error) => {
-      console.error('Error:', error);
       hideLoader(); 
     })
     .finally(() => {

@@ -74,6 +74,13 @@ searchForm.addEventListener('submit', (event) => {
       hideLoader();
     })
     .catch((error) => {
+      console.log(error); 
+      iziToast.error({
+        message: 'Error. Try entering the correct word!',
+        position: 'topRight',
+        class: 'error-toast',
+        timeout: 4000,
+      });
       hideLoader(); 
     })
     .finally(() => {

@@ -4,6 +4,7 @@ const BASE_URL = 'https://pixabay.com/api/';
 export function requestSending(query) {
   return fetch(`${BASE_URL}?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&per_page=9`)
     .then(response => {
+      console.log('Response status:', response.status);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

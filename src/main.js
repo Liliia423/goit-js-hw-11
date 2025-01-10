@@ -11,7 +11,7 @@ const gallery = document.querySelector('.gallery');
 
 const loader = document.querySelector('.loader');
 
-searchForm.addEventListener('submit', async (event) => {
+/*searchForm.addEventListener('submit', async (event) => {
   event.preventDefault(); 
   const query = searchField.value.trim();
 
@@ -43,7 +43,45 @@ searchForm.addEventListener('submit', async (event) => {
   }
 
   searchField.value = ''; 
+});*/
+
+/*======== варіант без await ========*/
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault(); 
+  const query = searchField.value.trim();
+
+  if (!query) {
+    return;
+  }
+
+  showLoader();
+
+  requestSending(query)
+    .then((data) => {
+      if (data.hits.length === 0) {
+        iziToast.error({
+          message: 'Sorry, there are no images matching your search query. Please try again.',
+          position: 'topRight',
+          class: 'error-toast',
+          timeout: 4000,
+        });
+        hideLoader(); 
+        return;
+      }
+
+      gallery.innerHTML = ''; 
+      renderGallery(data.hits); 
+      hideLoader();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      hideLoader(); 
+    })
+    .finally(() => {
+      searchField.value = ''; 
+    });
 });
+
 
 
 function showLoader() {
